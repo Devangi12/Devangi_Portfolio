@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Devangi Patel — Electronics & Communication Engineering student at PDEU. IoT, Embedded Systems, Robotics, AI, Industry 4.0. CGPA 9.0.">
+<meta name="keywords" content="Devangi Patel, ECE, PDEU, IoT, Embedded Systems, Robotics, AI, ESP32, Engineer">
+<meta property="og:title" content="Devangi Patel — ECE Engineer & IoT Developer">
+<meta property="og:description" content="B.Tech ECE student at PDEU building intelligent systems at the intersection of hardware, AI, and connectivity.">
+<title>Devangi Patel — ECE Engineer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --bg3: #18181f;
+  --accent: #00d4aa;
+  --accent2: #7c6df7;
+  --accent3: #ff6b6b;
+  --text: #f0eff8;
+  --text2: #9b9aaa;
+  --text3: #5c5b6e;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(0,212,170,0.2);
+  --card: rgba(255,255,255,0.03);
+  --r: 12px;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* NOISE OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* GRID BACKGROUND */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0,212,170,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text2);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.nav-cta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  border: 1px solid var(--border2);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+.nav-cta:hover { background: rgba(0,212,170,0.1); }
+
+/* SECTIONS */
+section { position: relative; z-index: 1; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 60px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+h1.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.hero-name span {
+  color: var(--accent);
+  display: block;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 500;
+  color: var(--text2);
+  margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-stat {
+  text-align: left;
+}
+
+.hero-stat-num {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+}
+
+.hero-stat-label {
+  font-size: 0.75rem;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0a0a0f;
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary:hover { background: #00b896; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* HERO RIGHT — animated terminal */
+.hero-visual {
+  position: relative;
+}
+
+.terminal {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.terminal-bar {
+  background: rgba(255,255,255,0.04);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+
+.terminal-title {
+  margin-left: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--text3);
+}
+
+.terminal-body {
+  padding: 1.25rem 1.5rem;
+  line-height: 2;
+}
+
+.t-line { display: flex; gap: 0.5rem; }
+.t-prompt { color: var(--accent); }
+.t-cmd { color: #e8e3ff; }
+.t-out { color: var(--text2); padding-left: 0.5rem; }
+.t-key { color: var(--accent2); }
+.t-val { color: #f0c27f; }
+.t-green { color: #7ec699; }
+.t-blue { color: #79b8ff; }
+.t-comment { color: var(--text3); }
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--accent);
+  vertical-align: middle;
+  animation: blink 1.1s step-end infinite;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ABOUT */
+#about {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--text2);
+  margin-bottom: 1.2rem;
+  line-height: 1.9;
+}
+
+.about-text strong { color: var(--accent); font-weight: 500; }
+
+.about-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  transition: border-color 0.2s;
+}
+.info-card:hover { border-color: var(--border2); }
+
+.info-card-icon {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-card-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.info-card-val {
+  font-size: 0.85rem;
+  color: var(--text2);
+}
+
+/* EDUCATION */
+#education {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.edu-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.2s;
+}
+.edu-card:hover { border-color: var(--border2); }
+
+.edu-degree {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.edu-institute {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.edu-duration {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text3);
+}
+
+.cgpa-badge {
+  background: rgba(0,212,170,0.1);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  min-width: 120px;
+}
+
+.cgpa-num {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+}
+
+.cgpa-label {
+  font-size: 0.7rem;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+}
+
+.subjects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.subject-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* SKILLS */
+#skills {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-category {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  transition: border-color 0.2s;
+}
+.skill-category:hover { border-color: var(--border2); }
+
+.skill-cat-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text2);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid;
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.skill-tag.teal { color: #00d4aa; border-color: rgba(0,212,170,0.3); background: rgba(0,212,170,0.06); }
+.skill-tag.teal:hover { background: rgba(0,212,170,0.15); }
+.skill-tag.purple { color: #a78bfa; border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.06); }
+.skill-tag.purple:hover { background: rgba(167,139,250,0.15); }
+.skill-tag.coral { color: #fb923c; border-color: rgba(251,146,60,0.3); background: rgba(251,146,60,0.06); }
+.skill-tag.coral:hover { background: rgba(251,146,60,0.15); }
+.skill-tag.blue { color: #60a5fa; border-color: rgba(96,165,250,0.3); background: rgba(96,165,250,0.06); }
+.skill-tag.blue:hover { background: rgba(96,165,250,0.15); }
+.skill-tag.pink { color: #f472b6; border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.06); }
+.skill-tag.pink:hover { background: rgba(244,114,182,0.15); }
+
+/* PROJECTS */
+#projects {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-line, var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.project-card:hover::before { transform: scaleX(1); }
+.project-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+.project-card.iot { --accent-line: #00d4aa; }
+.project-card.health { --accent-line: #f472b6; }
+.project-card.comm { --accent-line: #60a5fa; }
+.project-card.industry { --accent-line: #fb923c; }
+.project-card.ai { --accent-line: #a78bfa; }
+.project-card.agri { --accent-line: #4ade80; }
+
+.project-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.project-icon.teal { background: rgba(0,212,170,0.1); }
+.project-icon.pink { background: rgba(244,114,182,0.1); }
+.project-icon.blue { background: rgba(96,165,250,0.1); }
+.project-icon.coral { background: rgba(251,146,60,0.1); }
+.project-icon.purple { background: rgba(167,139,250,0.1); }
+.project-icon.green { background: rgba(74,222,128,0.1); }
+
+.project-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.project-link {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text3);
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+.project-link:hover { border-color: var(--accent); color: var(--accent); }
+
+.project-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.project-hackathon {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+.project-desc {
+  font-size: 0.875rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  color: var(--text3);
+  border-radius: 3px;
+}
+
+/* ACHIEVEMENTS */
+#achievements {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.achievement-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card.featured {
+  border-color: rgba(251,146,60,0.3);
+  background: rgba(251,146,60,0.03);
+}
+
+.achievement-card.featured::after {
+  content: 'FEATURED';
+  position: absolute;
+  top: 1rem;
+  right: -2rem;
+  background: rgba(251,146,60,0.15);
+  color: #fb923c;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  padding: 0.25rem 3rem;
+  transform: rotate(45deg);
+}
+
+.achievement-prize {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fb923c;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.achievement-sub {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.achievement-body {
+  font-size: 0.875rem;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.achievement-team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.team-member {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text2);
+}
+
+.team-member.me {
+  border-color: var(--border2);
+  color: var(--accent);
+  background: rgba(0,212,170,0.06);
+}
+
+.mini-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mini-ach {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  transition: border-color 0.2s;
+}
+.mini-ach:hover { border-color: var(--border2); }
+
+.mini-ach-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.mini-ach-body {
+  font-size: 0.8rem;
+  color: var(--text2);
+}
+
+/* ORGANIZATIONS */
+#orgs {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.orgs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.org-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+.org-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+.org-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.org-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.org-body {
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* RESUME */
+#resume {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.resume-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.resume-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem 2.25rem;
+  max-width: 900px;
+}
+
+.resume-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.resume-contact-line {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text2);
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.resume-contact-line a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.resume-contact-line a:hover { text-decoration: underline; }
+
+.resume-block {
+  margin-bottom: 1.35rem;
+}
+
+.resume-block h4 {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-block p,
+.resume-block li {
+  font-size: 0.88rem;
+  color: var(--text2);
+  line-height: 1.65;
+}
+
+.resume-block ul {
+  margin-left: 1.1rem;
+}
+
+.resume-block li { margin-bottom: 0.45rem; }
+
+.resume-block li strong { color: var(--text); font-weight: 500; }
+
+.resume-block a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.resume-block a:hover { text-decoration: underline; }
+
+.resume-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text2);
+}
+
+.resume-skills-grid span strong { color: var(--text); }
+
+.resume-edu-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin-bottom: 0.25rem;
+}
+
+.resume-edu-row strong { color: var(--text); }
+
+/* CONTACT */
+#contact {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  text-decoration: none;
+  transition: all 0.2s;
+  color: var(--text);
+}
+.contact-link:hover { border-color: var(--border2); transform: translateX(4px); }
+
+.contact-link-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(0,212,170,0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.contact-link-text { flex: 1; }
+.contact-link-label {
+  font-size: 0.7rem;
+  color: var(--text3);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.contact-link-val {
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+.contact-link-arrow {
+  color: var(--text3);
+  font-size: 0.8rem;
+}
+
+/* FOOTER */
+footer {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text3);
+  position: relative;
+  z-index: 1;
+}
+
+footer span { color: var(--accent); }
+
+/* SCROLL ANIMATIONS */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in.d1 { transition-delay: 0.1s; }
+.fade-in.d2 { transition-delay: 0.2s; }
+.fade-in.d3 { transition-delay: 0.3s; }
+.fade-in.d4 { transition-delay: 0.4s; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--text3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* MOBILE */
+.hamburger { display: none; background: none; border: none; cursor: pointer; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .achievements-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .nav-links { display: none; }
+  .hamburger { display: block; color: var(--text2); font-size: 1.2rem; }
+}
+
+@media (max-width: 600px) {
+  .container { padding: 0 1rem; }
+  .hero-stats { gap: 1rem; }
+  .edu-card { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  nav { padding: 0 1rem; }
+}
+
+/* GLOW ORBS */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+}
+.orb1 { width: 500px; height: 500px; background: #00d4aa; top: -200px; right: -100px; }
+.orb2 { width: 400px; height: 400px; background: #7c6df7; bottom: 100px; left: -150px; }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">DP_</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#orgs">Organizations</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="resume.html" target="_blank" rel="noopener" class="nav-cta">Resume ↗</a>
+  <button class="hamburger" aria-label="Menu">☰</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-eyebrow">ECE @ PDEU · Batch 2024–28</p>
+        <h1 class="hero-name">
+          Devangi
+          <span>Patel.</span>
+        </h1>
+        <p class="hero-title">Electronics & Communication Engineer</p>
+        <p class="hero-desc">
+          Building intelligent systems at the intersection of <strong style="color:var(--accent)">embedded hardware</strong>, <strong style="color:var(--accent)">AI</strong>, and <strong style="color:var(--accent)">IoT connectivity</strong>. Passionate about Industry 4.0, edge computing, and making machines smarter — from sensor to cloud.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">9.0</span>
+            <span class="hero-stat-label">CGPA</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">6+</span>
+            <span class="hero-stat-label">Projects</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">₹50K</span>
+            <span class="hero-stat-label">Prize Funding</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">4</span>
+            <span class="hero-stat-label">Tech Communities</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View Projects →</a>
+          <a href="resume.html" target="_blank" rel="noopener" class="btn-secondary">Resume ↗</a>
+          <a href="https://www.linkedin.com/in/devangipatel121105" target="_blank" rel="noopener" class="btn-secondary">LinkedIn ↗</a>
+          <a href="https://github.com/Devangi12" target="_blank" rel="noopener" class="btn-secondary">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+            <span class="terminal-title">devangi@pdeu:~</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">cat profile.json</span></div>
+            <div class="t-line"><span class="t-out">{</span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Devangi Patel"</span>,</span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"degree"</span>: <span class="t-val">"B.Tech ECE"</span>,</span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"institute"</span>: <span class="t-val">"PDEU"</span>,</span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"cgpa"</span>: <span class="t-blue">9.0</span>,</span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"focus"</span>: [</span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"IoT"</span>, <span class="t-val">"Embedded AI"</span>,</span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Robotics"</span>, <span class="t-val">"Industry 4.0"</span></span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;],</span></div>
+            <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-green">"building cool things"</span></span></div>
+            <div class="t-line"><span class="t-out">}</span></div>
+            <div class="t-line">&nbsp;</div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">./run_projects.sh</span></div>
+            <div class="t-line"><span class="t-out t-green">✓ KrishiRakshak AI — running</span></div>
+            <div class="t-line"><span class="t-out t-green">✓ Predictive Maintenance — deployed</span></div>
+            <div class="t-line"><span class="t-out t-green">✓ Health Wearable — in progress</span></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label fade-in">About Me</p>
+    <h2 class="section-title fade-in d1">Engineering the intelligent edge.</h2>
+
+    <div class="about-grid">
+      <div class="about-text fade-in d2">
+        <p>I'm a first-year B.Tech student in Electronics and Communication Engineering at <strong>Pandit Deendayal Energy University (PDEU)</strong>, Gujarat — driven by a deep curiosity about how intelligent systems interact with the physical world.</p>
+        <p>My work sits at the convergence of <strong>embedded systems</strong>, <strong>IoT</strong>, and <strong>edge AI</strong>. I build hardware-software systems that sense, reason, and act — from predictive maintenance systems on factory floors to wearable health monitors and long-range communication devices.</p>
+        <p>I'm an active member of the <strong>Student Satellite Program (SSP)</strong> in collaboration with ISRO, IEEE signal processing and women-in-engineering chapters, and the <strong>Cretus Robotics Club</strong>. I believe that meaningful engineering happens at the intersection of collaboration, curiosity, and consistent execution.</p>
+        <p>I'm currently exploring <strong>ROS-based robotic simulation</strong>, <strong>TinyML for edge inference</strong>, and scalable IoT architectures — always looking for the next challenging problem worth solving.</p>
+      </div>
+
+      <div class="about-cards fade-in d3">
+        <div class="info-card">
+          <div class="info-card-icon">🎓</div>
+          <div class="info-card-title">Education</div>
+          <div class="info-card-val">B.Tech ECE, PDEU · 2024–2028</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📍</div>
+          <div class="info-card-title">Location</div>
+          <div class="info-card-val">Gujarat, India</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">⚡</div>
+          <div class="info-card-title">Primary Domains</div>
+          <div class="info-card-val">IoT · Embedded Systems · Robotics · Edge AI</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🤝</div>
+          <div class="info-card-title">Communities</div>
+          <div class="info-card-val">IEEE SPS · IEEE WIE · SSP-ISRO · Cretus</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📬</div>
+          <div class="info-card-title">Email</div>
+          <div class="info-card-val">devangipatel1211@gmail.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label fade-in">Academic Record</p>
+    <h2 class="section-title fade-in d1">Consistent academic excellence.</h2>
+
+    <div class="edu-card fade-in d2">
+      <div>
+        <div class="edu-degree">B.Tech in Electronics & Communication Engineering</div>
+        <div class="edu-institute">Pandit Deendayal Energy University (PDEU), Gandhinagar</div>
+        <div class="edu-duration">2024 – 2028 · No backlogs · Sem III (ongoing)</div>
+        <div class="subjects-grid">
+          <span class="subject-tag">Mathematics I, II, III</span>
+          <span class="subject-tag">Digital Circuits</span>
+          <span class="subject-tag">Electronics Devices & Circuits</span>
+          <span class="subject-tag">Networks & Systems</span>
+          <span class="subject-tag">Intro to AI</span>
+          <span class="subject-tag">Computer Programming I & II</span>
+          <span class="subject-tag">Engineering Chemistry</span>
+          <span class="subject-tag">Engineering Graphics</span>
+          <span class="subject-tag">Applied Physics</span>
+        </div>
+      </div>
+      <div>
+        <div class="cgpa-badge">
+          <span class="cgpa-num">9.0</span>
+          <span class="cgpa-label">CGPA</span>
+        </div>
+        <div style="text-align:center; margin-top:0.75rem;">
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)">Sem I: 8.9</div>
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)">Sem II: 9.08</div>
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)">Sem III: 8.85*</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label fade-in">Technical Skills</p>
+    <h2 class="section-title fade-in d1">Tools, platforms & domains.</h2>
+
+    <div class="skills-grid">
+      <div class="skill-category fade-in d1">
+        <div class="skill-cat-title">Programming</div>
+        <div class="skill-tags">
+          <span class="skill-tag teal">Python</span>
+          <span class="skill-tag teal">C</span>
+          <span class="skill-tag teal">Arduino C/C++</span>
+          <span class="skill-tag teal">Embedded C</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in d2">
+        <div class="skill-cat-title">Hardware & MCUs</div>
+        <div class="skill-tags">
+          <span class="skill-tag coral">ESP32</span>
+          <span class="skill-tag coral">Raspberry Pi 5</span>
+          <span class="skill-tag coral">LoRa SX1278</span>
+          <span class="skill-tag coral">Sensor Integration</span>
+          <span class="skill-tag coral">Breadboard Prototyping</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in d3">
+        <div class="skill-cat-title">Sensors & Modules</div>
+        <div class="skill-tags">
+          <span class="skill-tag blue">DS18B20</span>
+          <span class="skill-tag blue">MPU6050</span>
+          <span class="skill-tag blue">ACS712</span>
+          <span class="skill-tag blue">MAX30102</span>
+          <span class="skill-tag blue">MLX90614</span>
+          <span class="skill-tag blue">GSR Sensor</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in d1">
+        <div class="skill-cat-title">Software & Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag purple">Arduino IDE</span>
+          <span class="skill-tag purple">ROS</span>
+          <span class="skill-tag purple">OpenCV</span>
+          <span class="skill-tag purple">Git / GitHub</span>
+          <span class="skill-tag purple">ThingSpeak</span>
+          <span class="skill-tag purple">MiDaS</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in d2">
+        <div class="skill-cat-title">Domains</div>
+        <div class="skill-tags">
+          <span class="skill-tag pink">IoT</span>
+          <span class="skill-tag pink">Edge AI</span>
+          <span class="skill-tag pink">Robotics</span>
+          <span class="skill-tag pink">Industry 4.0</span>
+          <span class="skill-tag pink">Computer Vision</span>
+          <span class="skill-tag pink">Wireless Comm.</span>
+          <span class="skill-tag pink">Automation</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in d3">
+        <div class="skill-cat-title">Concepts</div>
+        <div class="skill-tags">
+          <span class="skill-tag teal">Sensor Fusion</span>
+          <span class="skill-tag teal">Real-time Systems</span>
+          <span class="skill-tag teal">I2C / 1-Wire / SPI</span>
+          <span class="skill-tag teal">Predictive Maintenance</span>
+          <span class="skill-tag teal">Signal Processing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label fade-in">Projects</p>
+    <h2 class="section-title fade-in d1">Building at the hardware-software frontier.</h2>
+
+    <div class="projects-grid">
+
+      <!-- KrishiRakshak AI -->
+      <div class="project-card agri fade-in d1">
+        <div class="project-top">
+          <div class="project-icon green">🌾</div>
+          <div class="project-links">
+            <a href="https://github.com/Devangi12" target="_blank" class="project-link" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <div>
+          <div class="project-hackathon">Codeversity 2026 · Team SensorSurge</div>
+          <div class="project-name">KrishiRakshak AI</div>
+        </div>
+        <div class="project-desc">
+          Edge-AI powered farm decision support system for Indian smallholder farmers. Fuses real-time soil moisture, temperature, humidity, and light intensity data with a lightweight ML model on Raspberry Pi 5 for offline crop stress prediction and irrigation risk assessment. Translates sensor data into actionable advisories — not raw numbers — with optional voice alerts for low-literacy users.
+        </div>
+        <div style="font-size:0.8rem;color:var(--text2);margin-top:0.25rem;">
+          <strong style="color:var(--text3);font-size:0.7rem;">Contributions:</strong> Embedded sensing pipeline, sensor integration, system architecture, AI pipeline design.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">ESP32</span>
+          <span class="tech-tag">Raspberry Pi 5</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Edge AI</span>
+          <span class="tech-tag">Soil Sensors</span>
+          <span class="tech-tag">IoT</span>
+        </div>
+      </div>
+
+      <!-- Predictive Maintenance -->
+      <div class="project-card industry fade-in d2">
+        <div class="project-top">
+          <div class="project-icon coral">🏭</div>
+          <div class="project-links">
+            <a href="https://github.com/Devangi12/Predictive-Maintenance" target="_blank" class="project-link" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <div>
+          <div class="project-hackathon">Industry 4.0 Lab · PDEU</div>
+          <div class="project-name">Smart IoT-Based Machine Health Monitor</div>
+        </div>
+        <div class="project-desc">
+          Real-time predictive maintenance system using ESP32, DS18B20, MPU6050, and ACS712. Implements a hybrid detection algorithm combining fixed threshold logic with mean-based adaptive normalisation — classifying machine health as Normal, Warning, or Fault. Transmits data to ThingSpeak cloud for remote dashboards. Zero backlogs, 3-level LED+buzzer alert system, and fault-tolerant cloud uploads.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">ESP32</span>
+          <span class="tech-tag">DS18B20</span>
+          <span class="tech-tag">MPU6050</span>
+          <span class="tech-tag">ACS712</span>
+          <span class="tech-tag">ThingSpeak</span>
+          <span class="tech-tag">Arduino C++</span>
+          <span class="tech-tag">WiFi IoT</span>
+        </div>
+      </div>
+
+      <!-- Cognitive Overload -->
+      <div class="project-card ai fade-in d3">
+        <div class="project-top">
+          <div class="project-icon purple">🧠</div>
+          <div class="project-links">
+            <a href="https://github.com/Devangi12/Cognitive-Overload-Indicator" target="_blank" class="project-link" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <div>
+          <div class="project-hackathon">Research Project</div>
+          <div class="project-name">Cognitive Overload Wristband</div>
+        </div>
+        <div class="project-desc">
+          Non-invasive wearable that detects cognitive overload in real time using multimodal physiological sensing. Fuses EDA/GSR (35–40%), HRV via PPG (30–35%), skin temperature (15–20%), and accelerometer (10–15%) into a Cognitive Load Index — classifying mental state from Calm to Overload. Edge inference on ESP32 with LED and vibration feedback, sampling at rates validated by Nature 2024 dataset.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">ESP32</span>
+          <span class="tech-tag">MAX30102</span>
+          <span class="tech-tag">Grove GSR</span>
+          <span class="tech-tag">MLX90614</span>
+          <span class="tech-tag">MPU6050</span>
+          <span class="tech-tag">Sensor Fusion</span>
+        </div>
+      </div>
+
+      <!-- Military Pager -->
+      <div class="project-card comm fade-in d1">
+        <div class="project-top">
+          <div class="project-icon blue">📡</div>
+          <div class="project-links">
+            <a href="https://github.com/Devangi12/military-pager-system" target="_blank" class="project-link" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <div>
+          <div class="project-hackathon">Summer Collaboration · Team SensorSurge</div>
+          <div class="project-name">LoRa Military Pager System</div>
+        </div>
+        <div class="project-desc">
+          Secure, infrastructure-independent wireless pager system using ESP32 and LoRa SX1278 at 433 MHz. Two-node relay architecture through a central base station with structured packet protocol, loop prevention, and LCD feedback. Designed for field deployment in military, disaster, and remote industrial contexts where GSM and internet infrastructure is unavailable.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">ESP32</span>
+          <span class="tech-tag">LoRa SX1278</span>
+          <span class="tech-tag">433 MHz</span>
+          <span class="tech-tag">LCD I2C</span>
+          <span class="tech-tag">Arduino IDE</span>
+          <span class="tech-tag">Wireless Protocol</span>
+        </div>
+      </div>
+
+      <!-- Health Wearable -->
+      <div class="project-card health fade-in d2">
+        <div class="project-top">
+          <div class="project-icon pink">💗</div>
+          <div class="project-links">
+            <a href="https://github.com/Devangi12" target="_blank" class="project-link" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <div>
+          <div class="project-hackathon">Cognivia · IEEE WIE SBAG PDEU</div>
+          <div class="project-name">AI-Assisted Health & Safety Wearable</div>
+        </div>
+        <div class="project-desc">
+          Biomedical monitoring wearable targeting rural healthcare and elderly assistance. Integrates MAX30102 for SpO₂/PPG, DS18B20 for body temperature, MPU6050 for interrupt-based fall detection, and embedded AI logic for anemia risk prediction. Offline-capable low-power design with emergency alert system — designed for practical healthcare accessibility, not just demonstration.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">ESP32</span>
+          <span class="tech-tag">MAX30102</span>
+          <span class="tech-tag">DS18B20</span>
+          <span class="tech-tag">MPU6050</span>
+          <span class="tech-tag">PPG Analysis</span>
+          <span class="tech-tag">Embedded AI</span>
+        </div>
+      </div>
+
+      <!-- Depth Estimation -->
+      <div class="project-card ai fade-in d3">
+        <div class="project-top">
+          <div class="project-icon purple">👁️</div>
+          <div class="project-links">
+            <a href="https://github.com/Devangi12" target="_blank" class="project-link" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <div>
+          <div class="project-hackathon">Computer Vision · Edge AI</div>
+          <div class="project-name">Real-Time Depth Estimation (MiDaS)</div>
+        </div>
+        <div class="project-desc">
+          Monocular depth estimation pipeline running MiDaS neural network on Raspberry Pi for real-time scene understanding from a single camera feed. No stereo hardware required — AI infers spatial structure from 2D images. Demonstrates edge deployment of deep learning for embedded vision applications in robotics navigation, accessibility tools, and autonomous systems.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">MiDaS</span>
+          <span class="tech-tag">Raspberry Pi</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Edge AI</span>
+          <span class="tech-tag">Computer Vision</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <p class="section-label fade-in">Achievements</p>
+    <h2 class="section-title fade-in d1">Competing and building.</h2>
+
+    <div class="achievements-grid fade-in d2">
+      <div class="achievement-card featured">
+        <div class="achievement-prize">₹50,000</div>
+        <div class="achievement-title">Robofest 5.0 — Team Atom</div>
+        <div class="achievement-sub">Prize Funding · Ideation Stage Qualifier</div>
+        <div class="achievement-body">
+          Led system architecture and ROS simulation design for Team Atom at Robofest 5.0, advancing through the competitive ideation stage and securing ₹50,000 in prize funding. Responsible for robotic workflow planning, simulation architecture, and system-level engineering design using ROS — coordinating the team's technical direction through collaborative development cycles.
+        </div>
+        <div class="achievement-body" style="margin-bottom:0.5rem;font-size:0.8rem;color:var(--text3);">Team Members:</div>
+        <div class="achievement-team">
+          <span class="team-member me">Devangi Patel</span>
+          <span class="team-member">Heer Raj</span>
+          <span class="team-member">Tvisha Chhowchharia</span>
+          <span class="team-member">Khushi Yadav</span>
+        </div>
+        <div style="margin-top:1rem;font-family:var(--font-mono);font-size:0.72rem;color:var(--text3);">
+          Role: System Architecture · ROS Simulation Design
+        </div>
+      </div>
+
+      <div class="mini-achievements">
+        <div class="mini-ach">
+          <div class="mini-ach-title">Codeversity 2026</div>
+          <div class="mini-ach-body">Hackathon finalist with KrishiRakshak AI — edge AI platform for smallholder farmers. Team SensorSurge (5 members).</div>
+        </div>
+        <div class="mini-ach">
+          <div class="mini-ach-title">Cognivia · IEEE WIE SBAG</div>
+          <div class="mini-ach-body">Competed with AI-assisted health wearable project focused on rural healthcare accessibility and biomedical sensor fusion.</div>
+        </div>
+        <div class="mini-ach">
+          <div class="mini-ach-title">CGPA 9.0 — 0 Backlogs</div>
+          <div class="mini-ach-body">Consistent academic performance across all three semesters: 8.9 → 9.08 → 9.0, with O grades in multiple subjects.</div>
+        </div>
+        <div class="mini-ach">
+          <div class="mini-ach-title">SSP — ISRO Collaboration</div>
+          <div class="mini-ach-body">Active member of Student Satellite Program at PDEU in collaboration with ISRO, working on satellite systems and space technology.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZATIONS -->
+<section id="orgs">
+  <div class="container">
+    <p class="section-label fade-in">Organizations</p>
+    <h2 class="section-title fade-in d1">Communities I build with.</h2>
+
+    <div class="orgs-grid">
+      <div class="org-card fade-in d1">
+        <div class="org-icon" style="background:rgba(251,146,60,0.1);">🛰️</div>
+        <div class="org-name">Student Satellite Program (SSP)</div>
+        <div class="org-body">PDEU–ISRO collaboration for satellite engineering. Work on real-world space technology challenges alongside ISRO mentors — satellite systems, communication, and embedded space-grade hardware.</div>
+      </div>
+      <div class="org-card fade-in d2">
+        <div class="org-icon" style="background:rgba(96,165,250,0.1);">📶</div>
+        <div class="org-name">IEEE SPS SBC PDEU</div>
+        <div class="org-body">IEEE Signal Processing Society student branch. Engaged in technical workshops, research presentations, and collaborative signal processing projects within the IEEE academic framework.</div>
+      </div>
+      <div class="org-card fade-in d3">
+        <div class="org-icon" style="background:rgba(244,114,182,0.1);">⚡</div>
+        <div class="org-name">IEEE WIE SBAG PDEU</div>
+        <div class="org-body">IEEE Women in Engineering student affinity group. Organized and participated in Cognivia hackathon, technical seminars, and initiatives promoting women's leadership in STEM and engineering fields.</div>
+      </div>
+      <div class="org-card fade-in d1">
+        <div class="org-icon" style="background:rgba(74,222,128,0.1);">🤖</div>
+        <div class="org-name">Cretus — Robotics Club</div>
+        <div class="org-body">PDEU's premier robotics club. Active involvement in robot design, ROS simulation, and competitive robotics. Competed at Robofest 5.0 as Team Atom, securing ₹50K prize funding through ideation round.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="container">
+    <div class="resume-header-row fade-in">
+      <div>
+        <p class="section-label">Resume</p>
+        <h2 class="section-title">One-page overview.</h2>
+      </div>
+      <div class="resume-actions">
+        <a href="resume.html" target="_blank" rel="noopener" class="btn-primary">Open full resume ↗</a>
+        <button type="button" class="btn-secondary" id="printResumeBtn">Print / Save PDF</button>
+      </div>
+    </div>
+
+    <article class="resume-card fade-in d1">
+      <h3>Devangi Patel</h3>
+      <p class="resume-contact-line">
+        Gujarat, India ·
+        <a href="mailto:devangipatel1211@gmail.com">devangipatel1211@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/devangipatel121105" target="_blank" rel="noopener">linkedin.com/in/devangipatel121105</a> ·
+        <a href="https://github.com/Devangi12" target="_blank" rel="noopener">github.com/Devangi12</a>
+      </p>
+
+      <div class="resume-block">
+        <h4>Professional Summary</h4>
+        <p>
+          B.Tech Electronics and Communication Engineering student at PDEU (CGPA 9.0), actively learning embedded systems,
+          IoT, and robotics through hands-on projects. Growing experience in sensor integration, wireless systems, and hardware
+          prototyping through hackathons, IEEE initiatives, and ISRO-aligned Student Satellite Program participation.
+          Seeking internships to learn and contribute in embedded systems, IoT, and robotics.
+        </p>
+      </div>
+
+      <div class="resume-block">
+        <h4>Education</h4>
+        <div class="resume-edu-row">
+          <strong>B.Tech — Electronics and Communication Engineering</strong>
+          <span>2024 – 2028</span>
+        </div>
+        <div class="resume-edu-row">
+          <span>Pandit Deendayal Energy University (PDEU), Gujarat, India</span>
+          <strong>CGPA: 9.0/10</strong>
+        </div>
+      </div>
+
+      <div class="resume-block">
+        <h4>Technical Skills</h4>
+        <div class="resume-skills-grid">
+          <span><strong>Programming:</strong> Python, C, Arduino C, C++</span>
+          <span><strong>Embedded:</strong> ESP32, Raspberry Pi, LoRa, sensors</span>
+          <span><strong>Tools:</strong> Arduino IDE, ROS, OpenCV, Git/GitHub</span>
+          <span><strong>Domains:</strong> IoT, Robotics, Industry 4.0, CV</span>
+        </div>
+      </div>
+
+      <div class="resume-block">
+        <h4>Projects</h4>
+        <ul>
+          <li><strong>Smart Machine Health Monitor</strong> — Predictive maintenance (ESP32, ThingSpeak) · <a href="https://github.com/Devangi12/Predictive-Maintenance" target="_blank" rel="noopener">GitHub</a></li>
+          <li><strong>Cognitive Overload Wristband</strong> — HR, HRV, GSR stress monitoring · <a href="https://github.com/Devangi12/Cognitive-Overload-Indicator" target="_blank" rel="noopener">GitHub</a></li>
+          <li><strong>Military LoRa Pager System</strong> — Long-range ESP32 + LoRa field communication · <a href="https://github.com/Devangi12/military-pager-system" target="_blank" rel="noopener">GitHub</a></li>
+          <li><strong>KrishiRakshak AI</strong> — Codeversity 2026, Team SensorSurge; edge-AI agriculture platform</li>
+          <li><strong>Health Safety Wearable</strong> — Cognivia, IEEE WIE SBAG; biomedical IoT wearable</li>
+          <li><strong>MiDaS Depth Estimation</strong> — Monocular depth on Raspberry Pi, OpenCV</li>
+        </ul>
+      </div>
+
+      <div class="resume-block">
+        <h4>Leadership & Organizations</h4>
+        <ul>
+          <li><strong>Student Satellite Program (SSP)</strong> — PDEU & ISRO collaboration</li>
+          <li><strong>IEEE SPS SBC PDEU</strong> · <strong>IEEE WIE SBAG PDEU</strong> · <strong>Cretus Robotics Club</strong></li>
+        </ul>
+      </div>
+
+      <div class="resume-block" style="margin-bottom:0;">
+        <h4>Achievements</h4>
+        <ul>
+          <li><strong>Robofest Gujarat 5.0</strong> — Team Atom; ₹50,000 funding; System Architecture & ROS Simulation</li>
+          <li><strong>Codeversity 2026</strong> (KrishiRakshak AI) · <strong>Cognivia</strong> (Health Wearable)</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="fade-in">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Let's build something.</h2>
+        <p style="color:var(--text2);line-height:1.9;margin-bottom:1.5rem;">
+          I'm open to internship opportunities, research collaborations, hackathon teams, and interesting technical conversations. If you're working on something at the intersection of hardware, AI, and connectivity — let's talk.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:devangipatel1211@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-val">devangipatel1211@gmail.com</div>
+            </div>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="resume.html" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon">📄</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">Resume</div>
+              <div class="contact-link-val">View & download (PDF)</div>
+            </div>
+            <span class="contact-link-arrow">↗</span>
+          </a>
+          <a href="https://www.linkedin.com/in/devangipatel121105" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon">💼</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-val">linkedin.com/in/devangipatel121105</div>
+            </div>
+            <span class="contact-link-arrow">↗</span>
+          </a>
+          <a href="https://github.com/Devangi12" target="_blank" class="contact-link">
+            <div class="contact-link-icon">⌥</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-val">github.com/Devangi12</div>
+            </div>
+            <span class="contact-link-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="fade-in d2">
+        <div class="terminal" style="margin-top:3.5rem;">
+          <div class="terminal-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+            <span class="terminal-title">contact.sh</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-comment"># What I'm looking for:</span></div>
+            <div class="t-line">&nbsp;</div>
+            <div class="t-line"><span class="t-prompt">→</span><span class="t-out t-green"> Summer Internships (2025)</span></div>
+            <div class="t-line"><span class="t-prompt">→</span><span class="t-out t-green"> Research Collaborations</span></div>
+            <div class="t-line"><span class="t-prompt">→</span><span class="t-out t-green"> Hackathon Teams</span></div>
+            <div class="t-line"><span class="t-prompt">→</span><span class="t-out t-green"> Open Source Projects</span></div>
+            <div class="t-line">&nbsp;</div>
+            <div class="t-line"><span class="t-comment"># Strong in:</span></div>
+            <div class="t-line"><span class="t-out t-val">"IoT · Embedded · Edge AI"</span></div>
+            <div class="t-line">&nbsp;</div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> ping devangipatel1211</span></div>
+            <div class="t-line"><span class="t-out t-green">✓ Response time: fast</span></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with precision by <span>Devangi Patel</span> · ECE @ PDEU · 2025</p>
+  <p style="margin-top:0.4rem;">devangipatel1211@gmail.com · Gujarat, India</p>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.getElementById('printResumeBtn')?.addEventListener('click', () => {
+  const w = window.open('resume.html', '_blank');
+  if (w) w.addEventListener('load', () => w.print());
+});
+
+// Nav active state
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 80;
+    if (window.scrollY >= top) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.style.color = link.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devangi Patel — Resume</title>
+  <style>
+    @page { size: A4; margin: 0.45in 0.5in; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Calibri, Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.35;
+      color: #1a1a1a;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.45in 0.5in;
+    }
+    h1 { font-size: 20pt; letter-spacing: 0.5px; font-weight: 700; }
+    .contact { font-size: 9pt; color: #333; margin: 4px 0 10px; }
+    .contact a { color: #1a1a1a; text-decoration: none; }
+    h2 {
+      font-size: 10.5pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1.5px solid #2e86ab;
+      padding-bottom: 2px;
+      margin: 10px 0 6px;
+      color: #2e86ab;
+    }
+    p { margin-bottom: 6px; text-align: justify; }
+    .edu-row { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 2px; }
+    .edu-row strong { font-weight: 600; }
+    ul { margin: 0 0 6px 18px; }
+    li { margin-bottom: 3px; }
+    .project-title { font-weight: 600; }
+    .meta { color: #444; font-size: 9pt; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 16px;
+      font-size: 9.5pt;
+    }
+    .skills-grid span strong { font-weight: 600; }
+    @media print {
+      body { padding: 0; }
+      a { color: #1a1a1a; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DEVANGI PATEL</h1>
+    <p class="contact">
+      Gujarat, India &nbsp;|&nbsp;
+      <a href="mailto:devangipatel1211@gmail.com">devangipatel1211@gmail.com</a> &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/devangipatel121105">linkedin.com/in/devangipatel121105</a> &nbsp;|&nbsp;
+      <a href="https://github.com/Devangi12">github.com/Devangi12</a>
+    </p>
+  </header>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p>
+      B.Tech Electronics and Communication Engineering student at PDEU (CGPA 9.0), actively learning embedded systems,
+      IoT, and robotics through hands-on projects. Growing experience in sensor integration, wireless systems, and hardware
+      prototyping through hackathons, IEEE initiatives, and ISRO-aligned Student Satellite Program participation.
+      Seeking internships to learn and contribute in embedded systems, IoT, and robotics.
+    </p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu-row">
+      <strong>B.Tech — Electronics and Communication Engineering</strong>
+      <span>2024 – 2028</span>
+    </div>
+    <div class="edu-row">
+      <span>Pandit Deendayal Energy University (PDEU), Gujarat, India</span>
+      <span><strong>CGPA: 9.0/10</strong></span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <span><strong>Programming:</strong> Python, C, Arduino C</span>
+      <span><strong>Embedded:</strong> ESP32, Raspberry Pi, LoRa, sensor integration</span>
+      <span><strong>Tools:</strong> Arduino IDE, ROS, OpenCV, Git/GitHub</span>
+      <span><strong>Domains:</strong> IoT, Robotics, Industry 4.0, CV, Edge AI</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <li>
+        <span class="project-title">Smart Machine Health Monitor</span> <span class="meta">— <a href="https://github.com/Devangi12/Predictive-Maintenance">GitHub</a></span><br>
+        Predictive maintenance: ESP32, DS18B20, MPU6050, ACS712, ThingSpeak.
+      </li>
+      <li>
+        <span class="project-title">Cognitive Overload Wristband</span> <span class="meta">— <a href="https://github.com/Devangi12/Cognitive-Overload-Indicator">GitHub</a></span><br>
+        HR, HRV, GSR stress monitoring with embedded alerts.
+      </li>
+      <li>
+        <span class="project-title">Military LoRa Pager System</span> <span class="meta">— <a href="https://github.com/Devangi12/military-pager-system">GitHub</a></span><br>
+        Long-range ESP32 + LoRa two-way messaging, LCD interface.
+      </li>
+      <li>
+        <span class="project-title">KrishiRakshak AI</span> <span class="meta">— Codeversity 2026, Team SensorSurge</span><br>
+        AI-powered agriculture monitoring: environmental sensing, crop health analytics, IoT alerts, predictive insights.
+        Embedded sensing, sensor integration, system design, team collaboration.
+      </li>
+      <li>
+        <span class="project-title">Health Safety Wearable</span> <span class="meta">— Cognivia, IEEE WIE SBAG</span><br>
+        Real-time HR, SpO₂, temperature; AI anemia prediction; MPU6050 fall detection; low-power ESP32.
+      </li>
+      <li>
+        <span class="project-title">MiDaS Depth Estimation</span> <span class="meta">— Computer Vision</span><br>
+        Monocular depth on Raspberry Pi using MiDaS, OpenCV, and Python.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Leadership & Organizations</h2>
+    <ul>
+      <li><strong>Student Satellite Program (SSP)</strong> — PDEU & ISRO collaboration; collaborative engineering development</li>
+      <li><strong>IEEE SPS SBC PDEU</strong> — Technical community and signal processing initiatives</li>
+      <li><strong>IEEE WIE SBAG PDEU</strong> — Hackathons and women-in-engineering technical programs</li>
+      <li><strong>Cretus Robotics Club, PDEU</strong> — Robotics innovation and project execution</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Achievements</h2>
+    <ul>
+      <li><strong>Robofest Gujarat 5.0</strong> — Team Atom; ideation stage cleared; ₹50,000 funding; System Architecture & ROS Simulation</li>
+      <li>Hackathons: Codeversity 2026 (KrishiRakshak AI), Cognivia (Health Wearable)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Interests</h2>
+    <p>IoT, Embedded Systems, Robotics, AI, ROS Simulation, Industry 4.0, Computer Vision, Wireless Communication, Edge AI</p>
+  </section>
+</body>
+</html>
